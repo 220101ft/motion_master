@@ -1,0 +1,44 @@
+
+body {
+  background-color:white;
+  padding: 0;
+  margin: 0;
+}
+
+.container{
+  display: flex;
+  
+}
+
+#good{
+  text-align: center;
+  font-size: 25px;    
+  color: red;
+}
+#score{
+  text-align: center;
+  font-size: 25px;    
+  color: blue;
+
+}
+
+.left {
+  width:600px;
+  float: left;
+  padding: 10px 10px;
+
+}
+
+.right {
+  width:600px;
+  float: right;
+  padding: 10px 10px;
+  transform: scale(-1, 1); 
+}
+
+h1 {
+  font-family: Impact;
+  text-align: center;
+}
+
+
