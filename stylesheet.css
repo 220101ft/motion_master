@@ -5,10 +5,6 @@ body {
   margin: 0;
 }
 
-.container{
-  display: flex;
-  
-}
 
 #good{
   text-align: center;
@@ -41,4 +37,31 @@ h1 {
   text-align: center;
 }
 
+.button-container {
+  display: flex;
+  justify-content: center; /* ボタンを中央に配置 */
+  margin-top: 20px; /* 上部のマージンを追加 */
+}
 
+.button-container button {
+  margin-right: 10px; /* ボタン間の右側のマージンを追加 */
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.video-container,
+.webcam-container {
+  width: 50%;
+  height: auto;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+.video-container video,
+.webcam-container video {
+  width: 100%;
+  height: auto;
+}
