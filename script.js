@@ -29,7 +29,7 @@ navigator.getUserMedia(
 )
 
 //ボタンをクリックするとスタート（ビデオが流れる）
-document.getElementById("text-button").onclick = function () {
+document.getElementById("start-button").onclick = function () {
   target_score = document.getElementById("score");
   target_score.innerHTML = "SCORE: " + String(score);
   target = document.getElementById("good");
