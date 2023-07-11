@@ -41,20 +41,3 @@
     text-align: center;
   }
   
-  #videos-container {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  #video1-container,
-  #video2-container {
-    width: 50%;
-    height: auto;
-    padding: 10px;
-    box-sizing: border-box;
-  }
-  video {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  
