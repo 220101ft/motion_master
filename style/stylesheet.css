@@ -1,37 +1,41 @@
 body {
-  background-color: white;
+  background-color:white;
   padding: 0;
   margin: 0;
 }
 
-.container {
+.container{
   display: flex;
-  flex-wrap: wrap;
+  
 }
 
-.video-container {
-  width: 100%;
-  height: 0;
-  padding-bottom: 56.25%; /* 16:9 のアスペクト比を維持 */
-  position: relative;
+#good{
+  text-align: center;
+  font-size: 25px;    
+  color: red;
+}
+#score{
+  text-align: center;
+  font-size: 25px;    
+  color: blue;
+
 }
 
-.video-container video {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.left {
+  width:600px;
+  float: left;
+  padding: 10px 10px;
+
+}
+
+.right {
+  width:600px;
+  float: right;
+  padding: 10px 10px;
+  transform: scale(-1, 1); 
 }
 
 h1 {
   font-family: Impact;
   text-align: center;
 }
-
-/* .banner{
-  background: rgb(214, 228, 224);
-}
-
-#top .background{
-  background-image: url(./images/kendo1.jpg);
-} */

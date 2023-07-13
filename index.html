@@ -19,42 +19,21 @@
   </head>
 
   <body>
-    <main id="top">
-      <section id="banner">
-          <h1>剣道 練習システム</h1>
-          <div class="background">
-              <!-- バナー画像 -->
-          </div>
-      </section>
+    <div class="container">
 
-      <section id="score-bord">
-        <div class="text-center mt-4">
-          <div id="score"></div>
-          <div id="good"></div>    
+      <!-- 動画-->
+        <div class="left"> 
+          <video class="video1" id="video1" width="560" height="315" src="images/video.mp4" style="position:absolute"></video>
+          <canvas class="canvas1" id="canvas1" width="560" height="315" style="position:absolute"></canvas> 
         </div>
-      </section>
-
-      <section id="main-contents">
-        <div class="container">
-          <!-- 動画 -->
-          <div class="col-md-5">
-            <div class="video-container">
-              <video class="video1" id="video1" src="images/video.mp4"></video>
-            </div>
-            <canvas class="canvas1" id="canvas1" width="560" height="50"></canvas>
-          </div>
-
-          <div class="col-md-2"></div>
-
-          <!-- ウェブカメラ -->
-          <div class="col-md-5">
-            <div class="video-container">
-              <video id="video2" autoplay muted></video>
-            </div>
-            <canvas id="canvas2" width="560" height="50"></canvas>
-          </div>
-        </div>
-      </section>
+  
+      <!-- ウェブカメラ -->
+        <div class="right">
+          <video id="video2" width="560" height="315" autoplay muted　style="position:absolute">　</video>
+          <canvas id="canvas2" width="560" height="315" style="position:absolute"></canvas>
+        </div> 
+      </div>
+  
 
     <!-- STARTボタンとSTOPボタン -->
       <div class="text-center mt-4">

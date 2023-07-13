@@ -194,23 +194,3 @@ function calcPositionAngle(position1, position2) {
 function calcAngleDegrees(x1, y1, x2, y2) {
   return Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
 }
-
-
-// ウィンドウのリサイズ時に動画とウェブカメラのサイズを調整する関数
-function resizeVideoContainers() {
-  const videoContainers = document.getElementsByClassName('video-container');
-  const windowHeight = window.innerHeight;
-  const headerHeight = document.querySelector('h1').offsetHeight;
-  const buttonHeight = document.querySelector('.text-center').offsetHeight;
-  const maxHeight = windowHeight - headerHeight - buttonHeight - 40; // 適宜調整
-
-  for (let i = 0; i < videoContainers.length; i++) {
-    videoContainers[i].style.maxHeight = `${maxHeight}px`;
-  }
-}
-
-// ウィンドウのリサイズイベントを監視して動画とウェブカメラのサイズを調整
-window.addEventListener('resize', resizeVideoContainers);
-
-// ページ読み込み時にも動画とウェブカメラのサイズを調整
-window.addEventListener('DOMContentLoaded', resizeVideoContainers);
