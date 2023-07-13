@@ -3,6 +3,8 @@ const color1 = 'aqua'; // ビデオ1で描画するキーポイントとスケ�
 const color2 = 'red'; // ビデオ2で描画するキーポイントとスケルトンの色。
 const lineWidth = 3; // スケルトンの線の太さ。
 const maxAllowError = 50; // 許容される最大の角度誤差。ポーズの比較において、この値以下の角度誤差は「GOOD!」と判定されます。
+
+// 以下の変数は、HTML要素から取得するためのコードが省略されているものとします
 const video1 = document.getElementById('video1'); // ビデオ1のHTML要素。解析に使用するビデオが設定されています。
 const canvas1 = document.getElementById('canvas1'); // キャンバス1のHTML要素。ビデオ1の骨格表示のために使用されます。
 const contentWidth1 = canvas1.width; // キャンバス1の幅。
@@ -19,7 +21,6 @@ let user_pose; // ユーザのポーズの情報を格納する変数。ルー�
 let error; // ポーズの角度誤差を格納する変数。ループ内で計算されます。
 let intervalId; // setIntervalメソッドのインターバルIDを格納する変数。ループの停止に使用されます。
 let score = 0; // スコアを格納する変数。正解したポーズの数をカウントします。初期値は0です。
-
 
 //ウェブカメラ作動
 navigator.getUserMedia(
@@ -42,19 +43,17 @@ document.getElementById("stop-button").onclick = function () {
   stopLoop();
 };
 
-
-
-// ビデオが流れてる間のループ
+// ビデオが再生される際のイベントリスナー
 video1.addEventListener('play', () => {
   intervalId = setInterval(async () => {
-    // ビデオの骨格表示（Multiple複数)
+    // ビデオ1の骨格表示（Multiple複数)
     posenet.load().then(function (net) {
       return net.estimateMultiplePoses(video1, {
         flipHorizontal: false,
         maxDetections: 2,
         scoreThreshold: 0.6,
         nmsRadius: 20
-      })
+      });
     }).then(function (poses) {
       console.log("左側", poses);
       ctx1.clearRect(0, 0, contentWidth1, contentHeight1);
@@ -64,7 +63,7 @@ video1.addEventListener('play', () => {
       });
 
       correct_pose = poses[0];
-    })
+    });
 
     // ウェブカメラの骨格表示（Single 1人)
     posenet.load().then(function (net) {
@@ -78,7 +77,7 @@ video1.addEventListener('play', () => {
       drawKeypoints(pose.keypoints, minPartConfidence, ctx2, color2);
       drawSkeleton(pose.keypoints, minPartConfidence, ctx2, color2);
       user_pose = pose;
-    })
+    });
 
     error = calcAngleError(correct_pose, user_pose);
     target = document.getElementById("good");
@@ -91,7 +90,7 @@ video1.addEventListener('play', () => {
     } else {
       target.innerHTML = "　";
     }
-  }, 500)
+  }, 500);
 });
 
 // ループを停止する関数
@@ -100,18 +99,12 @@ function stopLoop() {
   video1.pause(); // 動画の再生を停止する
 }
 
-
+// Keypointを座標のタプルに変換する関数
 function toTuple({ y, x }) {
   return [y, x];
 }
 
-function drawPoint(ctx, y, x, r, color) {
-  ctx.beginPath();
-  ctx.arc(x, y, r, 0, 2 * Math.PI);
-  ctx.fillStyle = color;
-  ctx.fill();
-}
-
+// キーポイントを描画する関数
 function drawKeypoints(keypoints, minConfidence, ctx, color, scale = 1) {
   const excludedParts = ['leftEye', 'rightEye', 'leftEar', 'rightEar'];
 
@@ -125,7 +118,7 @@ function drawKeypoints(keypoints, minConfidence, ctx, color, scale = 1) {
   }
 }
 
-
+// セグメントを描画する関数
 function drawSegment([ay, ax], [by, bx], color, scale, ctx) {
   ctx.beginPath();
   ctx.moveTo(ax * scale, ay * scale);
@@ -135,6 +128,7 @@ function drawSegment([ay, ax], [by, bx], color, scale, ctx) {
   ctx.stroke();
 }
 
+// スケルトンを描画する関数
 function drawSkeleton(keypoints, minConfidence, ctx, color, scale = 1) {
   const adjacentKeyPoints = posenet.getAdjacentKeyPoints(keypoints, minConfidence);
 
@@ -145,7 +139,7 @@ function drawSkeleton(keypoints, minConfidence, ctx, color, scale = 1) {
   });
 }
 
-//以下こちらをコピペ　https://qiita.com/daiking1756/items/ba833e51b30421e760b5
+// ループ内での角度誤差を計算する関数
 function calcAngleError(correct_pose, user_pose) {
   let error = 0;
 
@@ -157,30 +151,30 @@ function calcAngleError(correct_pose, user_pose) {
   error += calcKeypointAngleError(correct_pose, user_pose, 7, 9);
   error += calcKeypointAngleError(correct_pose, user_pose, 8, 10);
 
-  // // Hip - Knee
+  // Hip - Knee
   error += calcKeypointAngleError(correct_pose, user_pose, 11, 13);
   error += calcKeypointAngleError(correct_pose, user_pose, 12, 14);
 
-  // // Knee - Ankle
+  // Knee - Ankle
   error += calcKeypointAngleError(correct_pose, user_pose, 13, 15);
   error += calcKeypointAngleError(correct_pose, user_pose, 14, 16);
 
   error /= 8;
 
-  return error
+  return error;
 }
 
-// 正解ポーズとユーザポーズの、ある2つのkeypoint間の角度の誤差を計算
+// 正解ポーズとユーザポーズの、ある2つのキーポイント間の角度の誤差を計算
 function calcKeypointAngleError(correct_pose, user_pose, num1, num2) {
   let error = Math.abs(calcKeypointsAngle(correct_pose.keypoints, num1, num2) - calcKeypointsAngle(user_pose.keypoints, num1, num2))
   if (error <= 180) {
-    return error
+    return error;
   } else {
-    return 360 - error
+    return 360 - error;
   }
 }
 
-// keypoint[num1]とkeypoint[num2]の角度を計算
+// キーポイント[num1]とキーポイント[num2]の角度を計算
 function calcKeypointsAngle(keypoints, num1, num2) {
   return calcPositionAngle(keypoints[num1].position, keypoints[num2].position);
 }

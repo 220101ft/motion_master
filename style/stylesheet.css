@@ -4,32 +4,30 @@ body {
   margin: 0;
 }
 
-.container{
+.container {
   display: flex;
-  
 }
 
-#good{
+#good {
   text-align: center;
   font-size: 25px;    
   color: red;
 }
-#score{
+
+#score {
   text-align: center;
   font-size: 25px;    
   color: blue;
-
 }
 
 .left {
-  width:600px;
+  width: 600px;
   float: left;
   padding: 10px 10px;
-
 }
 
 .right {
-  width:600px;
+  width: 600px;
   float: right;
   padding: 10px 10px;
   transform: scale(-1, 1); 
