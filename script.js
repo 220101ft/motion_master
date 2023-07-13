@@ -43,6 +43,12 @@ document.getElementById("stop-button").onclick = function () {
   stopLoop();
 };
 
+// 追加
+function startVideo() {
+  video1.play();
+}
+
+
 // ビデオが再生される際のイベントリスナー
 video1.addEventListener('play', () => {
   intervalId = setInterval(async () => {
@@ -117,6 +123,14 @@ function drawKeypoints(keypoints, minConfidence, ctx, color, scale = 1) {
     drawPoint(ctx, y * scale, x * scale, 3, color);
   }
 }
+
+function drawPoint(ctx, y, x, r, color) {
+  ctx.beginPath();
+  ctx.arc(x, y, r, 0, 2 * Math.PI);
+  ctx.fillStyle = color;
+  ctx.fill();
+}
+
 
 // セグメントを描画する関数
 function drawSegment([ay, ax], [by, bx], color, scale, ctx) {
