@@ -34,11 +34,6 @@ navigator.mediaDevices.getUserMedia({ video: true }) // getUserMedia を使っ�
   })
   .catch(err => console.error(err));
 
-function resizeCanvas(video, canvas) {
-    canvas.width = video.videoWidth; // キャンバスの幅を動画の幅に合わせる
-    canvas.height = video.videoHeight; // キャンバスの高さを動画の高さに合わせる
-  }
-  
 document.getElementById('start-button').onclick = function () { // スタートボタンがクリックされたときの処理
   target_score = document.getElementById('score');
   target_score.innerHTML = 'SCORE: ' + String(score);
@@ -46,7 +41,7 @@ document.getElementById('start-button').onclick = function () { // スタート�
   target.innerHTML = '　';
   video1.play(); // video1 を再生
 };
-  
+
 document.getElementById('stop-button').onclick = function () { // ストップボタンがクリックされたときの処理
   stopLoop();
 };
@@ -57,7 +52,7 @@ function startVideo() { // 動画の処理を開始する関数
       resizeCanvasToWindowSize(canvas1);
       resizeCanvasToWindowSize(canvas2);
     });
-    
+
     intervalId = setInterval(() => {
       posenet.load().then(net => { // posenet.load() でモデルをロード
         return net.estimateMultiplePoses(video1, {
@@ -103,12 +98,13 @@ function startVideo() { // 動画の処理を開始する関数
       });
     }, 500);
   });
-  
+}
+
 function stopLoop() { // ループを停止する関数
   clearInterval(intervalId);
   video1.pause();
 }
-  
+
 function toTuple({ y, x }) {
   return [y, x];
 }
@@ -155,7 +151,6 @@ function drawSkeleton(keypoints, minConfidence, ctx, color, scale = 1) {
     );
   });
 }
-
 function calcAngleError(correct_pose, user_pose) {
   let error = 0;
 
@@ -172,6 +167,7 @@ function calcAngleError(correct_pose, user_pose) {
 
   return error;
 }
+
 
 function calcKeypointAngleError(correct_pose, user_pose, num1, num2) {
   let error = Math.abs(
@@ -216,5 +212,4 @@ function resizeCanvas(video, canvas) {
   } else {
     resizeCanvasToWindowSize(canvas);
   }
-}
 }
