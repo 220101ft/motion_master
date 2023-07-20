@@ -27,7 +27,7 @@
             </div>
 
             <!-- スコアボード -->
-            <div>
+            <div class="score-board">
                 <div id="score"></div>
                 <div id="good"></div>
             </div>
@@ -36,21 +36,21 @@
             <div class="container">
                 <!-- 動画 -->
                 <div class="left"> 
-                <video class="video1" id="video1" width="560" height="315" src="./images/video.mp4" style="position:absolute"></video>
-                <canvas class="canvas1" id="canvas1" width="560" height="315" style="position:absolute"></canvas> 
+                    <video class="video1" id="video1" width="560" height="315" src="./images/video.mp4" style="position:absolute"></video>
+                    <canvas class="canvas1" id="canvas1" width="560" height="315" style="position:absolute"></canvas> 
                 </div>
             
                 <!-- ウェブカメラ -->
                 <div class="right">
-                <video id="video2" width="560" height="315" autoplay muted style="position:absolute"></video>
-                <canvas id="canvas2" width="560" height="315" style="position:absolute"></canvas>
+                    <video id="video2" width="560" height="315" autoplay muted style="position:absolute"></video>
+                    <canvas id="canvas2" width="560" height="315" style="position:absolute"></canvas>
                 </div> 
             </div>
         
             <!-- ボタン -->
-            <div>
+            <div class="btn-area" >
                 <!-- STARTボタンとSTOPボタン -->
-                <div id="btn-area" class="text-center mt-4">
+                <div class="text-center mt-4">
                     <button id="start-button" class="btn btn-primary">START</button>
                     <button id="stop-button" class="btn btn-danger">STOP</button>
                 </div>
