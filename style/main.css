@@ -1,4 +1,6 @@
+/* ロゴ表示 */
 .logo_fadein{
+    /* フェードアウト */
 	background: #FFF;
 	position: fixed;
 	top: 0;
@@ -8,6 +10,7 @@
 	z-index: 999;
 }
 .logo_fadein p {
+    /* フェードイン */
 	position: fixed;
 	left: 50%;
 	top: 50%;
