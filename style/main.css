@@ -1,3 +1,34 @@
+body{
+    color: rgb(0, 63, 145);
+    line-height: 2.0rem;
+    margin: 0;
+}
+
+/* .background{
+    /* height: 300px; */
+    /* padding-top: 30%; */
+    /* background-size: cover; */
+    /* background-position: bottom; */
+/* } */
+
+#top .background{
+    background-image: url(/style/images/kendo1.jpg);
+} */
+
+
+.example img {
+    width: 100%;
+    height: 50px;
+    object-fit: cover;
+}
+
+
+
+
+
+
+
+
 /* ロゴ表示 */
 .logo_fadein{
     /* フェードアウト */
