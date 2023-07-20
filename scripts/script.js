@@ -74,7 +74,7 @@ video1.addEventListener('play', () => {
     // ウェブカメラの骨格表示（Single 1人)
     posenet.load().then(function (net) {
       const pose = net.estimateSinglePose(video2, {
-        flipHorizontal: true
+        flipHorizontal: true // ← 左右反転させる
       });
       return pose;
     }).then(function (pose) {

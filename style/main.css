@@ -1,33 +1,80 @@
+/* ローカルフォント */
+@font-face {
+	font-family: 'KikaiChokokuJIS';
+	src: url(./font/Togalite-Regular.otf) format('opentype');
+}
+
 body{
-    color: rgb(0, 63, 145);
+    color: rgb(0, 0, 0);
     line-height: 2.0rem;
     margin: 0;
 }
 
-/* .background{
-    /* height: 300px; */
-    /* padding-top: 30%; */
-    /* background-size: cover; */
-    /* background-position: bottom; */
-/* } */
+.banner{
+    text-align: center;
+}
 
-#top .background{
-    background-image: url(/style/images/kendo1.jpg);
-} */
-
-
-.example img {
+.banner_image {
     width: 100%;
-    height: 50px;
-    object-fit: cover;
+    height: 580px;
+    flex-shrink: 0;
+    background: url("./images/kendo1.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover; 
+    opacity: 0.7;
+    /* position: absolute; */
+    /* top: 45px; */
+    /* left: 0px; */
+    /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+    /* overflow: hidden; */
+    /* filter: sepia(40%); */
+    /* filter: drop-shadow(0px 0px 10px rgb(7, 7, 7)); */
 }
 
 
 
+/* * {
+box-sizing: border-box;
+} */
+
+#good {
+    text-align: center;
+    font-size: 25px;    
+    color: red;
+}
+
+#score {
+    text-align: center;
+    font-size: 25px;    
+    color: blue;
+
+}
+
+.left {
+    width: 600px;
+    float: left;
+    /* padding: 400px 10px 0 10px; */
+}
+
+.right {
+    width: 600px;
+    float: right;
+    /* padding: 400px 10px 0 10px; */
+    transform: scale(-1, 1); 
+}
 
 
+.btn-area{
+    width: 100%;
+    text-align: center;
+    position: absolute;
+}
 
-
+.score-board{
+    margin-top: 50px;
+    /* padding: 60px; */
+}
 
 /* ロゴ表示 */
 .logo_fadein{
