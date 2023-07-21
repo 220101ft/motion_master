@@ -8,7 +8,7 @@ body{
     color: rgb(0, 0, 0);
     line-height: 2.0rem;
     margin: 0;
-}
+    background: repeating-linear-gradient(#c2a8cc, #c2a8cc 10px, #fff 10px, #fff 60px);}
 
 .banner{
     text-align: center;
